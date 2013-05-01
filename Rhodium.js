@@ -139,7 +139,7 @@ function answered()
         else
         {
 //                 alert("Wrong");
-            score-=difficulty*difficulty*100;
+            score-=difficulty*difficulty*80;
             if(statusP.innerHTML=="Transport passenger!")
             {
                 sendObstruction(false);
@@ -182,20 +182,41 @@ function askQuestion()
         if(ansNum==0)
         {
             document.getElementById("answer1").innerHTML = answerArray[questionType][(questionArray[questionType][questionNumber][false]) + 1];
-            document.getElementById("answer2").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
-            document.getElementById("answer3").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
+            var temp = document.getElementById("answer1").innerHTML;
+            do{
+                document.getElementById("answer2").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+            }
+            while(temp == document.getElementById("answer2").innerHTML);
+            do{
+                document.getElementById("answer3").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+            }
+            while(document.getElementById("answer3").innerHTML == document.getElementById("answer2").innerHTML || temp == document.getElementById("answer3").innerHTML);
         }
         else if(ansNum==1)
         {
             document.getElementById("answer2").innerHTML = answerArray[questionType][(questionArray[questionType][questionNumber][false]) + 1];
-            document.getElementById("answer1").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
-            document.getElementById("answer3").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
+            var temp = document.getElementById("answer2").innerHTML;
+            do{
+                document.getElementById("answer1").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+            }
+            while(temp == document.getElementById("answer1").innerHTML);
+            do{
+                document.getElementById("answer3").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+            }
+            while(document.getElementById("answer3").innerHTML == document.getElementById("answer1").innerHTML || temp == document.getElementById("answer3").innerHTML);
         }
         else
         {
             document.getElementById("answer3").innerHTML = answerArray[questionType][(questionArray[questionType][questionNumber][false]) + 1];
-            document.getElementById("answer2").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
-            document.getElementById("answer1").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
+            var temp = document.getElementById("answer3").innerHTML;
+            do{
+                document.getElementById("answer2").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+            }
+            while(temp == document.getElementById("answer2").innerHTML);
+            do{
+                document.getElementById("answer1").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+            }
+            while(document.getElementById("answer1").innerHTML == document.getElementById("answer2").innerHTML || temp == document.getElementById("answer1").innerHTML);
         }
     }
 }
