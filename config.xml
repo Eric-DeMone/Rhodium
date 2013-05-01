@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+   xmlns:rim="http://www.blackberry.com/ns/widgets"
+   version="1.0.0">
+ 
+   <name>Rhodium</name>
+   <description>Drive a taxi and answer questions!</description>
+   <content src="index.html"/>
+   <rim:orientation mode="landscape"/>
+   <author>Chocolate Noodles</author>
+ 
+</widget>
