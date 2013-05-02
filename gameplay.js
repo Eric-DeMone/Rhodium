@@ -1,10 +1,9 @@
-var gameTick;
+var gameTick; var hasPassenger = false;
 var dodge = false;
 var taxiX = 544, dodgeCounter = 0;
-var y = 0, buildingy = -320, buildingy2 = 320, buildingy3 = 0;
-var y = 0, buildingy = -320, buildingy2 = 320, buildingy3 = 0;
+var y = 0, buildingy = -320, buildingy2 = 320, buildingy3 = 0; var passengery1=0;
 var obstructiony = 700;
-var buildingArray = new Array();
+var buildingArray = new Array(); var passengerArray = new Array(); var pedestrianArray = new Array();
 var obstructionImage = new Image();
 
 function render(){
@@ -14,6 +13,11 @@ function render(){
 	roadScroll();
 	taxi();
 	buildingSpawn();
+	if(!hasPassenger){
+		passengerSpawn();	
+	}
+	else if(passengerSpawn){
+	}
 //	pedestrianWalk();
 	
 }
@@ -28,6 +32,9 @@ function taxi(){
 //  g.fillRect(taxiX, 410, 64, 128);	
 }
 
+function setHasPassenger(temp){
+	hasPassenger = temp;
+}
 function sendObstruction(wasRight)
 {
     if(wasRight)
@@ -120,6 +127,7 @@ function roadScroll(){
 	buildingy+=4;
     buildingy2+=4;
     buildingy3+=4;
+	passengery1+=4;
     if(buildingy==640){
         buildingy=-320;
         buildingArray[0].src = getBuildingSrc();
@@ -135,15 +143,32 @@ function roadScroll(){
         buildingArray[4].src = getBuildingSrc();
         buildingArray[5].src = getBuildingSrc();
     }
+	if(passengery1>=640){
+        passengery1=(Math.floor(Math.random()*-500));//(Math.floor(Math.random()*-64));
+        passengerArray[0].src = getPassengerSrc();
+    }
     
 }
 
-function pedestrian(){
-	
-	
+function passengerSpawn(){
+	var canvas = document.getElementById("bigCanvas");
+    var g=canvas.getContext("2d");
+	var x = 640;
+    for(var j = 0; j < 1; j++){
+        g.drawImage(passengerArray[j], x, passengery1);
+        x=704;
+    }
+    x = 0;
 	
 }
-function pedestrianWalk(){
+function getPassengerSrc(){
+	return "images/personTest.png";
+	
+}
+function pedestrianSpawn(){
+	
+}
+function getPedestrianSrc(){
 	
 }
 
@@ -166,10 +191,8 @@ function buildingSpawn(){
         g.drawImage(buildingArray[j+4], x, buildingy3);
         x=800;
     }
-	
-	
-	
-	
+
+
 }
 
 function getBuildingSrc(){
@@ -229,5 +252,10 @@ function startTimerTy(){
 		buildingArray[i] = new Image();
 		buildingArray[i].src = getBuildingSrc();
 	}
+		for(var i = 0; i < 5; i++){
+		passengerArray[i] = new Image();
+		passengerArray[i].src = getPassengerSrc();
+	}
+
 		gameTick = window.setInterval(function(){render()}, 10);
 }
