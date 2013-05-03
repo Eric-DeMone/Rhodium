@@ -266,8 +266,15 @@ function startTimerTy(){
 		passengerArray[i][0] = new Image();
 		passengerArray[i][0].src = getPassengerSrc();
         passengerArray[i][1] = Math.floor(Math.random() * -700 - 50);
-        passengerArray[i][2] = 288;
-        passengerArray[i][3] = 1;
+        passengerArray[i][3] = Math.floor(Math.random() * 3 - 1);
+        if(Math.floor(Math.random()*2)==0)
+        {
+            passengerArray[i][2] = Math.floor(Math.random() * 64 + 640);
+        }
+        else
+        {
+            passengerArray[i][2]=Math.floor(Math.random()*64+288);
+        }
 	}
 
 		gameTick = window.setInterval(function(){render()}, 10);
