@@ -108,6 +108,7 @@ function answered()
             if(statusP.innerHTML=="Transport passenger!")
             {
                 sendObstruction(true);
+//                sendObstruction(true, Math.floor(Math.random()*1));
                 setTimeout(function(){askQuestion()}, 3700);
             }
             else
@@ -122,6 +123,7 @@ function answered()
                    status=2; 
                 }
                 influence=9*difficulty;
+                setHasPassenger(true);
             }
             else if(status == 2)
             {
@@ -133,6 +135,7 @@ function answered()
                 status=1;
                 money+=influence;
                 statusP.innerHTML = "Pick up passenger!";
+                setHasPassenger(false);
             }
             score+=difficulty*difficulty*20;
         }
@@ -237,6 +240,12 @@ function resetStatus()
         }
 }
 
+function splashScreen()
+{
+    splashScreenPageDiv.style.visibility = 'hidden';
+    play.style.visibility = 'visible';
+}
+
 function runGame()
 {
     selectedDiv = 0;
@@ -246,7 +255,7 @@ function runGame()
     score = 0;
     resetStatus();
     bigCanvas.style.visibility = 'hidden';
-    play.style.visibility = 'visible';
+//    play.style.visibility = 'visible';
     play.innerHTML = "Play Game";
 //    gasCanvas.style.visibility = 'hidden';
     numericStats.style.visibility = 'hidden';

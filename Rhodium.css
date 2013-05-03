@@ -1,10 +1,15 @@
+
+#splashScreenPageDiv{
+    position:absolute;
+    visibility:visible;
+}
 #obstructionImage{
     position: absolute;
     visibility:hidden;
 }
 #pageDiv{
     position: absolute;
-    visibility: show;
+    visibility: hidden;
     width: 1024px;
     height: 600px;
     -webkit-user-select:none;

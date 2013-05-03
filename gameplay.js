@@ -5,6 +5,7 @@ var y = 0, buildingy = -320, buildingy2 = 320, buildingy3 = 0; var passengery1=0
 var obstructiony = 700;
 var buildingArray = new Array(); var passengerArray = new Array(); var pedestrianArray = new Array();
 var obstructionImage = new Image();
+var numPassengers = 10;
 
 function render(){
     var canvas = document.getElementById("bigCanvas");
@@ -13,10 +14,9 @@ function render(){
 	roadScroll();
 	taxi();
 	buildingSpawn();
+    passengerSpawn();
 	if(!hasPassenger){
-		passengerSpawn();	
-	}
-	else if(passengerSpawn){
+			
 	}
 //	pedestrianWalk();
 	
@@ -42,7 +42,7 @@ function sendObstruction(wasRight)
         dodge = true;
     }
     dodgeCounter=0;
-    obstructionImage.src = "images/Obstruction"+(Math.floor(Math.random()*1)+1)+".png";
+    obstructionImage.src = "images/Obstruction"+Math.floor(Math.random()*1+1)+".png";
     obstructiony=-50;
 }
 
@@ -127,7 +127,6 @@ function roadScroll(){
 	buildingy+=4;
     buildingy2+=4;
     buildingy3+=4;
-	passengery1+=4;
     if(buildingy==640){
         buildingy=-320;
         buildingArray[0].src = getBuildingSrc();
@@ -143,26 +142,35 @@ function roadScroll(){
         buildingArray[4].src = getBuildingSrc();
         buildingArray[5].src = getBuildingSrc();
     }
-	if(passengery1>=640){
-        passengery1=(Math.floor(Math.random()*-500));//(Math.floor(Math.random()*-64));
-        passengerArray[0].src = getPassengerSrc();
+    for(var i = 0; i<numPassengers; i++){
+        passengerArray[i][1] += 4 + passengerArray[i][3];
+        if(passengerArray[i][1]>=640){
+            passengerArray[i][3] = Math.floor(Math.random() * 3 - 1);
+            if(Math.floor(Math.random()*2)==0)
+            {
+                passengerArray[i][2] = Math.floor(Math.random() * 64 + 640);
+            }
+            else
+            {
+                passengerArray[i][2]=Math.floor(Math.random()*64+288);
+            }
+            passengerArray[i][1]=(Math.floor(Math.random()*-500 - 50));//(Math.floor(Math.random()*-64));
+            passengerArray[i][0].src = getPassengerSrc();
+        }
     }
-    
 }
 
 function passengerSpawn(){
 	var canvas = document.getElementById("bigCanvas");
     var g=canvas.getContext("2d");
-	var x = 640;
-    for(var j = 0; j < 1; j++){
-        g.drawImage(passengerArray[j], x, passengery1);
-        x=704;
+    for(var j = 0; j < numPassengers; j++){
+        g.drawImage(passengerArray[j][0], passengerArray[j][2], passengerArray[j][1]);
     }
     x = 0;
 	
 }
 function getPassengerSrc(){
-	return "images/personTest.png";
+	return "images/person" + Math.floor(Math.random() * 6 + 1) + ".png";
 	
 }
 function pedestrianSpawn(){
@@ -252,9 +260,14 @@ function startTimerTy(){
 		buildingArray[i] = new Image();
 		buildingArray[i].src = getBuildingSrc();
 	}
-		for(var i = 0; i < 5; i++){
-		passengerArray[i] = new Image();
-		passengerArray[i].src = getPassengerSrc();
+    
+    for(var i = 0; i < numPassengers; i++){
+        passengerArray[i] = new Array();
+		passengerArray[i][0] = new Image();
+		passengerArray[i][0].src = getPassengerSrc();
+        passengerArray[i][1] = Math.floor(Math.random() * -700 - 50);
+        passengerArray[i][2] = 288;
+        passengerArray[i][3] = 1;
 	}
 
 		gameTick = window.setInterval(function(){render()}, 10);
