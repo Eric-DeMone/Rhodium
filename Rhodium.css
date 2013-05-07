@@ -1,7 +1,32 @@
-
+#mainMenuForm{
+    visibility:hidden;
+}
+#play{
+    position:absolute;
+    left:268;
+    top:134;
+    width:364;
+    height:88;
+}
+#options{
+    position:absolute;
+    left:277;
+    top:250;
+    width:370;
+    height:90;
+}
+#close{
+    position:absolute;
+    left:290;
+    top:378;
+    width:374;
+    height:84;
+}
 #splashScreenPageDiv{
     position:absolute;
     visibility:visible;
+    -webkit-user-select:none;
+    cursor:default;
 }
 #obstructionImage{
     position: absolute;

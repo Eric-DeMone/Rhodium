@@ -240,10 +240,21 @@ function resetStatus()
         }
 }
 
+function optionsPage()
+{
+//    alert("Options Page");
+}
+                
 function splashScreen()
 {
-    splashScreenPageDiv.style.visibility = 'hidden';
-    play.style.visibility = 'visible';
+    gradeFourSplashScreen.src = "images/MenuScreen.PNG";
+    mainMenuForm.style.visibility = "visible";
+}
+
+function quit()
+{
+//                alert("Quit");
+   window.close()
 }
 
 function runGame()
@@ -255,8 +266,9 @@ function runGame()
     score = 0;
     resetStatus();
     bigCanvas.style.visibility = 'hidden';
+    splashScreenPageDiv.style.visibility = "visible";
+    mainMenuForm.style.visibility = "visible";
 //    play.style.visibility = 'visible';
-    play.innerHTML = "Play Game";
 //    gasCanvas.style.visibility = 'hidden';
     numericStats.style.visibility = 'hidden';
     difficultySelection.style.visibility = 'hidden';
@@ -277,7 +289,9 @@ function removeElement(objId)
 
 function selectDifficulty()
 {
-    play.style.visibility='hidden';
+//    alert("Play Game");
+    splashScreenPageDiv.style.visibility='hidden';
+    mainMenuForm.style.visibility='hidden';
     difficultySelection.style.visibility='visible';
 //    var addGasButton = document.createElement("button");
 //    addGasButton.innerHTML="Add Gas!";
