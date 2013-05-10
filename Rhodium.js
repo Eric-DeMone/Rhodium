@@ -1,3 +1,4 @@
+var highScoreArray = new Array();
 var numHomophoneTypes = 2;
 var time = 0;
 var gasPercent = 0;
@@ -17,6 +18,7 @@ var selectedDiv = 0;
 var status = 1;
 var influence = 0;
 var score = 0;
+var firstRun = true;
 
 var questionArray = new Array();
 var answerArray = new Array();
@@ -243,18 +245,25 @@ function resetStatus()
 function optionsPage()
 {
 //    alert("Options Page");
+    splashScreenPageDiv.style.visibility = "hidden";
+    optionsDiv.style.visibility = "visible";
 }
                 
 function splashScreen()
 {
     gradeFourSplashScreen.src = "images/MenuScreen.PNG";
     mainMenuForm.style.visibility = "visible";
+    for(var i = 0; i < 10; i++)
+    {
+        highScoreArray[(i*-1)+9] = 500 * i + 500;
+    }
+    updateHighScore();
 }
 
 function quit()
 {
-//                alert("Quit");
-   window.close()
+    window.open('', '_self');
+    window.close();
 }
 
 function runGame()
@@ -267,7 +276,11 @@ function runGame()
     resetStatus();
     bigCanvas.style.visibility = 'hidden';
     splashScreenPageDiv.style.visibility = "visible";
-    mainMenuForm.style.visibility = "visible";
+    if(!firstRun)
+    {
+        mainMenuForm.style.visibility = "visible";
+    }
+    firstRun = false;
 //    play.style.visibility = 'visible';
 //    gasCanvas.style.visibility = 'hidden';
     numericStats.style.visibility = 'hidden';
@@ -277,14 +290,8 @@ function runGame()
     answer1.style.visibility = 'hidden';
     answer2.style.visibility = 'hidden';
     answer3.style.visibility = 'hidden';
-//    removeElement("addGas");
     initializeQuestions();
-}
-
-function removeElement(objId)
-{
-    var n = document.getElementById(objId);
-    n.parentNode.removeChild(n);
+    optionsDiv.style.visibility = 'hidden';
 }
 
 function selectDifficulty()
@@ -419,17 +426,49 @@ function update() {
     {
         numberDiv.innerHTML = ((time/(1000/(10*((-1*difficulty)+4)))).toFixed(0));
         clearInterval(gameTick);
-        if(time*difficulty*difficulty>highScore)
-        {
-            highScore=((time*difficulty*difficulty)/multiplier).toFixed(0);
-//            alert("New High Score: " + highScore);
-        }
-        else
-        {
-//            alert("High Score: "+highScore);
-        }
+        checkHighScore();
         runGame();
     }
+}
+
+function checkHighScore()
+{
+    var newPlace = 10;
+    for(var i = 0; i < 10; i++)
+    {
+        if(highScoreArray[i] < score)
+        {
+            newPlace = i;
+            i=10;
+        }
+    }
+    alert(score);
+    alert(newPlace);
+    var temp1 = 0;
+    var temp2 = 0;
+    if(newPlace != 10)
+    {
+        for(var i = 0; i < 10 - newPlace; i++)
+        {
+            highScoreArray[(i-9)*-1] = highScoreArray[(i-8)*-1];
+        }
+        highScoreArray[newPlace] = score.toFixed(0);
+        updateHighScore();
+    }
+}
+
+function updateHighScore()
+{
+    place1.innerHTML = highScoreArray[0];
+    place2.innerHTML = highScoreArray[1];
+    place3.innerHTML = highScoreArray[2];
+    place4.innerHTML = highScoreArray[3];
+    place5.innerHTML = highScoreArray[4];
+    place6.innerHTML = highScoreArray[5];
+    place7.innerHTML = highScoreArray[6];
+    place8.innerHTML = highScoreArray[7];
+    place9.innerHTML = highScoreArray[8];
+    place10.innerHTML = highScoreArray[9];
 }
 
 function initializeQuestions()
