@@ -1,7 +1,7 @@
 var gameTick; var hasPassenger = false;
 var dodge = false;
 var taxiX = 544, dodgeCounter = 0;
-var y = 0, buildingy = -320, buildingy2 = 320, buildingy3 = 0; var passengery1=0;
+var y = 0, buildingy = -324, buildingy2 = 316, buildingy3 = -4; var passengery1=0;
 var obstructiony = 700;
 var buildingArray = new Array(); var passengerArray = new Array(); var pedestrianArray = new Array();
 var obstructionImage = new Image();
@@ -186,17 +186,23 @@ function buildingSpawn(){
     var g=canvas.getContext("2d");
 	var x = 0;
     for(var j = 0; j < 2; j++){
-        g.drawImage(buildingArray[j], x, buildingy);
+		if(buildingArray[j].src.indexOf("images/building6.png") != -1 && x == 800){
+        	g.drawImage(buildingArray[j], 640, buildingy);}
+		else{g.drawImage(buildingArray[j], x, buildingy);}
         x=800;
     }
     x = 0;
     for(var j = 0; j < 2; j++){
-        g.drawImage(buildingArray[j+2], x, buildingy2);
+        if(buildingArray[j + 2].src.indexOf("images/building6.png") != -1 && x == 800){
+        	g.drawImage(buildingArray[j+2], 640, buildingy2);}
+		else{g.drawImage(buildingArray[j+2], x, buildingy2);}
         x=800;
     }
     x = 0;
     for(var j = 0; j < 2; j++){
-        g.drawImage(buildingArray[j+4], x, buildingy3);
+        if(buildingArray[j + 4].src.indexOf("images/building6.png") != -1 && x == 800){
+        	g.drawImage(buildingArray[j+4], 640, buildingy3);}
+		else{g.drawImage(buildingArray[j+4], x, buildingy3);}
         x=800;
     }
 
