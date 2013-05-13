@@ -19,6 +19,7 @@ var status = 1;
 var influence = 0;
 var score = 0;
 var firstRun = true;
+var playerName = "Anonymous";
 
 var questionArray = new Array();
 var answerArray = new Array();
@@ -256,6 +257,7 @@ function splashScreen()
     for(var i = 0; i < 10; i++)
     {
         highScoreArray[(i*-1)+9] = 500 * i + 500;
+        highScoreArray[(i*-1)+19] = "Anonymous";
     }
     updateHighScore();
 }
@@ -268,6 +270,7 @@ function quit()
 
 function runGame()
 {
+    playerName = "Anonymous";
     selectedDiv = 0;
     status = 1;
     influence = 0;
@@ -308,35 +311,40 @@ function selectDifficulty()
 
 function playGame()
 {
-    var radios = dif1;
-    if(radios.checked)
+    if(nameField.value != "")
     {
-//        alert("Easy!");
-        difficulty=1;
+        playerName = nameField.value.substr(0, 10);
+        var radios = dif1;
+        if(radios.checked)
+        {
+    //        alert("Easy!");
+            difficulty=1;
+        }
+        var radios = dif2;
+        if(radios.checked)
+        {
+    //        alert("Medium!");
+            difficulty=2;
+        }
+        var radios = dif3;
+        if(radios.checked)
+        {
+    //        alert("Hard!");
+            difficulty=3;
+        }
+        
+    //    gasCanvas.style.visibility='visible';
+        difficultySelection.style.visibility='hidden';
+        answerSelection.style.visibility = 'visible';
+        bigCanvas.style.visibility = 'visible';
+        numericStats.style.visibility = 'visible';
+        gasPercent=100;
+        time=0;
+        update();
+        startTimer();
+        askQuestion();
     }
-    var radios = dif2;
-    if(radios.checked)
-    {
-//        alert("Medium!");
-        difficulty=2;
-    }
-    var radios = dif3;
-    if(radios.checked)
-    {
-//        alert("Hard!");
-        difficulty=3;
-    }
-    
-//    gasCanvas.style.visibility='visible';
-    difficultySelection.style.visibility='hidden';
-    answerSelection.style.visibility = 'visible';
-    bigCanvas.style.visibility = 'visible';
-    numericStats.style.visibility = 'visible';
-    gasPercent=100;
-    time=0;
-    update();
-    startTimer();
-    askQuestion();
+    alert("Name: " + playerName);
 }
 
 
@@ -442,8 +450,6 @@ function checkHighScore()
             i=10;
         }
     }
-    alert(score);
-    alert(newPlace);
     var temp1 = 0;
     var temp2 = 0;
     if(newPlace != 10)
@@ -451,24 +457,26 @@ function checkHighScore()
         for(var i = 0; i < 10 - newPlace; i++)
         {
             highScoreArray[(i-9)*-1] = highScoreArray[(i-8)*-1];
+            highScoreArray[((i-9)*-1) + 10] = highScoreArray[((i-8)*-1) + 10];
         }
         highScoreArray[newPlace] = score.toFixed(0);
+        highScoreArray[newPlace + 10] = playerName;
         updateHighScore();
     }
 }
 
 function updateHighScore()
 {
-    place1.innerHTML = highScoreArray[0];
-    place2.innerHTML = highScoreArray[1];
-    place3.innerHTML = highScoreArray[2];
-    place4.innerHTML = highScoreArray[3];
-    place5.innerHTML = highScoreArray[4];
-    place6.innerHTML = highScoreArray[5];
-    place7.innerHTML = highScoreArray[6];
-    place8.innerHTML = highScoreArray[7];
-    place9.innerHTML = highScoreArray[8];
-    place10.innerHTML = highScoreArray[9];
+    place1.innerHTML = highScoreArray[10] + " " + highScoreArray[0];
+    place2.innerHTML = highScoreArray[11] + " " + highScoreArray[1];
+    place3.innerHTML = highScoreArray[12] + " " + highScoreArray[2];
+    place4.innerHTML = highScoreArray[13] + " " + highScoreArray[3];
+    place5.innerHTML = highScoreArray[14] + " " + highScoreArray[4];
+    place6.innerHTML = highScoreArray[15] + " " + highScoreArray[5];
+    place7.innerHTML = highScoreArray[16] + " " + highScoreArray[6];
+    place8.innerHTML = highScoreArray[17] + " " + highScoreArray[7];
+    place9.innerHTML = highScoreArray[18] + " " + highScoreArray[8];
+    place10.innerHTML = highScoreArray[19] + " " + highScoreArray[9];
 }
 
 function initializeQuestions()
