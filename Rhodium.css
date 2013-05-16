@@ -1,3 +1,13 @@
+body{
+    margin:0;
+}
+#optionsBackButton{
+    position:absolute;
+    bottom:20;
+    left:20;
+    border:2px solid #000000;
+    background-color:#ffffff;
+}
 #place1{
     position:absolute;
     left:784;

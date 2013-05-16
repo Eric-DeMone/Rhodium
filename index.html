@@ -9,12 +9,12 @@
         <div id="splashScreenPageDiv">
             <image id = "gradeFourSplashScreen" src = "images/SplashScreen.png" onclick="splashScreen()"></image>
             <form id = "mainMenuForm">
-                <div id = "play" onclick="selectDifficulty()" style="hidden"></div>
+                <div id = "play" onclick="playGame()" style="hidden"></div>
                 <div id = "options" onclick="optionsPage()" style="hidden"></div>
                 <div id = "close" onclick="quit()"></div>
             </form>
         </div>
-        <div id = "optionsDiv" onclick = "runGame()" style="background-color:321656">
+        <div id = "optionsDiv" style="background-color:FFFF99;">
             <form id = "highScoreForm">
                 <div id = "place1" style="border:2px solid #000000;"></div>
                 <div id = "place2" style="border:2px solid #000000;"></div>
@@ -27,6 +27,16 @@
                 <div id = "place9" style="border:2px solid #000000;"></div>
                 <div id = "place10" style="border:2px solid #000000;"></div>
             </form>
+            <div id = "optionsBackButton" onclick = "runGame();" style = "background-colour:FFFFFF">Main Menu</div>
+            <p>
+                Difficulty:
+                <select id = "difficultySelection" name = difficultySelection>
+                    <option value="1">Easy<br>
+                    <option value="2">Medium<br>
+                    <option value ="3">Hard<br>
+                </select>
+            </p>
+            Name: <input id = nameField onclick="" value = "Anonymous" type = "text">
         </div>
         <div id="pageDiv">
             <canvas id="bigCanvas" width="1024" height="600" style="border:1px solid">
@@ -39,12 +49,6 @@
             </form>
 <!--            <canvas id="gasCanvas" width = "100" height = "50" style="border:1px solid #c3c3c3;" ></canvas><br>-->
     <!--        <button id="addGas" onclick="addGas()">Add Gas!</button>-->
-            <form id = "difficultySelection">
-                <input id = "dif1" onclick="playGame()" type="radio" name="dif" value="1" checked>Easy<br>
-                <input id = "dif2" onclick="playGame()" type="radio" name="dif" value="2">Medium<br>
-                <input id = "dif3" onclick="playGame()" type="radio" name="dif" value ="3">Hard<br>
-                Name: <input id = nameField onclick="" value = "Anonymous" type = "text">
-            </form>
             <div id = "gamePage" width = "1024" height = "600"></div>
             <image id="obstructionImage" src ="images/Obstruction1.PNG"></image>
             <form id = "answerSelection">

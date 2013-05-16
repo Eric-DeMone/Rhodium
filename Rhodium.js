@@ -248,6 +248,7 @@ function optionsPage()
 //    alert("Options Page");
     splashScreenPageDiv.style.visibility = "hidden";
     optionsDiv.style.visibility = "visible";
+    difficultySelection.style.visibility='visible';
 }
                 
 function splashScreen()
@@ -296,55 +297,30 @@ function runGame()
     initializeQuestions();
     optionsDiv.style.visibility = 'hidden';
 }
-
-function selectDifficulty()
-{
-//    alert("Play Game");
-    splashScreenPageDiv.style.visibility='hidden';
-    mainMenuForm.style.visibility='hidden';
-    difficultySelection.style.visibility='visible';
-//    var addGasButton = document.createElement("button");
-//    addGasButton.innerHTML="Add Gas!";
-//    addGasButton.onclick = function(){addGas()};
-//    document.body.appendChild(addGasButton);
-}
-
 function playGame()
 {
+                
+    multiplier = 0.01;
     if(nameField.value != "")
     {
         playerName = nameField.value.substr(0, 10);
-        var radios = dif1;
-        if(radios.checked)
-        {
-    //        alert("Easy!");
-            difficulty=1;
-        }
-        var radios = dif2;
-        if(radios.checked)
-        {
-    //        alert("Medium!");
-            difficulty=2;
-        }
-        var radios = dif3;
-        if(radios.checked)
-        {
-    //        alert("Hard!");
-            difficulty=3;
-        }
-        
-    //    gasCanvas.style.visibility='visible';
-        difficultySelection.style.visibility='hidden';
-        answerSelection.style.visibility = 'visible';
-        bigCanvas.style.visibility = 'visible';
-        numericStats.style.visibility = 'visible';
-        gasPercent=100;
-        time=0;
-        update();
-        startTimer();
-        askQuestion();
     }
-    alert("Name: " + playerName);
+    difficulty = difficultySelection.value;
+    if(difficulty=3)
+    {
+        money = 50;
+    }
+//    gasCanvas.style.visibility='visible';
+    splashScreenPageDiv.style.visibility='hidden';
+    mainMenuForm.style.visibility='hidden';
+    answerSelection.style.visibility = 'visible';
+    bigCanvas.style.visibility = 'visible';
+    numericStats.style.visibility = 'visible';
+    gasPercent=100;
+    time=0;
+    update();
+    startTimer();
+    askQuestion();
 }
 
 
