@@ -42,7 +42,7 @@ function sendObstruction(wasRight)
         dodge = true;
     }
     dodgeCounter=0;
-    obstructionImage.src = "images/Obstruction"+Math.floor(Math.random()*1+1)+".png";
+    obstructionImage.src = "images/Obstruction"+Math.floor(Math.random()*2)+".png";
     obstructiony=-50;
 }
 
