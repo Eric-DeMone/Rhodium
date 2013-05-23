@@ -52,6 +52,15 @@ function selected(n)
 //    }
 }
 
+function changeLighting(n){
+	if(n>=360){
+	}
+	else
+	{
+		updateShading(Math.abs(((n-180)/180)) * 0.8);
+	}
+}
+
 function answered()
 {
     var isCorrect = false;
@@ -379,17 +388,20 @@ function update() {
     multiplier+=0.00001;
     score+=(difficulty*difficulty)*multiplier;
     gameRunning=true;
-    if(gasPercent<0)
+    if(gasPercent<0||((time/(1000/(10*((-1*difficulty)+4)))).toFixed(0))>360)
     {
         clearInterval(gameTick);
         gasPercent=0;
         gameRunning=false;
+//		time = 0;
     }
     if(gameRunning)
     {
         numberDiv.innerHTML = ("Time: "+((time/(1000/(10*((-1*difficulty)+4)))).toFixed(0))+"<br>Score: "+score.toFixed(0));
         moneyP.innerHTML = money.toFixed(2)+"$";
         
+		changeLighting(((time/(1000/(10*((-1*difficulty)+4)))).toFixed(0)));
+		
 //        var drawingCanvas = document.getElementById('gasCanvas');
 //        var context = drawingCanvas.getContext("2d");
         

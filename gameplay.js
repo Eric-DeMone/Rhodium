@@ -5,6 +5,7 @@ var y = 0, buildingy = -324, buildingy2 = 316, buildingy3 = -4; var passengery1=
 var obstructiony = 700;
 var buildingArray = new Array(); var passengerArray = new Array(); var pedestrianArray = new Array();
 var obstructionImage = new Image();
+var alpha = 0;
 var numPassengers = 10;
 
 function render(){
@@ -22,15 +23,23 @@ function render(){
 //	pedestrianWalk();
 	
 }
+function updateShading(n)
+{
+	alpha = n;
+}
 function daynight(){
-	var aplha = 0.0;
+	
 	var canvas = document.getElementById("bigCanvas");
     var g=canvas.getContext("2d");
-	g.fillStyle = "rgba(0,0,0,aplha)";
+	//g.fillStyle = "rgba(0,0,0,aplha)";
+	
+	g.fillStyle = "rgba(0,0,0,"+alpha+")";
 	g.fillRect(0, 0, 1024, 600);
-	if(gametick == 180000){
-		g.fillStyle = "rgba(0,0,0,aplha )"
-	}
+	//if(gametick == 1){
+	
+	
+	//alpha ++;
+	//}
 }
 
 function taxi(){
@@ -53,7 +62,7 @@ function sendObstruction(wasRight)
         dodge = true;
     }
     dodgeCounter=0;
-    obstructionImage.src = "images/Obstruction"+Math.floor(Math.random()*2)+".png";
+    obstructionImage.src = "images/Obstruction"+Math.floor(Math.random()*2+1)+".png";
     obstructiony=-50;
 }
 
