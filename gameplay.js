@@ -15,11 +15,22 @@ function render(){
 	taxi();
 	buildingSpawn();
     passengerSpawn();
+	daynight();
 	if(!hasPassenger){
 			
 	}
 //	pedestrianWalk();
 	
+}
+function daynight(){
+	var aplha = 0.0;
+	var canvas = document.getElementById("bigCanvas");
+    var g=canvas.getContext("2d");
+	g.fillStyle = "rgba(0,0,0,aplha)";
+	g.fillRect(0, 0, 1024, 600);
+	if(gametick == 180000){
+		g.fillStyle = "rgba(0,0,0,aplha )"
+	}
 }
 
 function taxi(){
