@@ -155,7 +155,11 @@ body{
     left: 30px;
     font-family: Arial,Helvetica,sans-serif;
     font-weight:bold;
+    color:#ffff00;
     font-size:30;
+}
+#buyGas{
+     color:#000000;
 }
 #statusP{
     font-family: Arial,Helvetica,sans-serif;
