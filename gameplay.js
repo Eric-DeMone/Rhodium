@@ -6,9 +6,9 @@ var obstructiony = 700;
 var buildingArray = new Array(); var passengerArray = new Array(); var pedestrianArray = new Array();
 var obstructionImage = new Image();
 var alpha = 0;
-var red = 150;
-var green = 180;
-var blue = 210;
+var red = 0;
+var green = 0;
+var blue = 0;
 var numPassengers = 10;
 
 function render(){
@@ -241,11 +241,6 @@ function getBuildingSrc(){
 ////		alert("empty picture");
 //	}
 }
-
-function buildingScroll(){
-	
-}
-
 
 function startTimerTy(){
 	for(var i = 0; i < 6; i++){
