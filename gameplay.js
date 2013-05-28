@@ -6,6 +6,9 @@ var obstructiony = 700;
 var buildingArray = new Array(); var passengerArray = new Array(); var pedestrianArray = new Array();
 var obstructionImage = new Image();
 var alpha = 0;
+var red = 150;
+var green = 180;
+var blue = 210;
 var numPassengers = 10;
 
 function render(){
@@ -33,7 +36,7 @@ function daynight(){
     var g=canvas.getContext("2d");
 	//g.fillStyle = "rgba(0,0,0,aplha)";
 	
-	g.fillStyle = "rgba(0,0,0,"+alpha+")";
+	g.fillStyle = "rgba("+red+","+green+","+blue+","+alpha+")";
 	g.fillRect(0, 0, 1024, 600);
 	//if(gametick == 1){
 	
@@ -242,44 +245,7 @@ function getBuildingSrc(){
 function buildingScroll(){
 	
 }
-//function pedestrianWalk(){
-//	var onStreet 
-//	pedestrian(Math.floor(Math.random()*30), (Math.floor(Math.random()*64)+320));
-//	y+=5;
-//	
-//}
-//
-//function pedestrian(n, m){
-//	var canvas = document.getElementById("bigCanvas");
-//	var g=canvas.getContext("2d");
-//	
-//	blackhair = new Image();
-//	blackhair.src = "images/PersonTestHair.png";
-//	brownhair = new Image();
-//	brownhair.src = "images/PersonTestHair.png";
-//	blondehair = new Image();
-//	blondehair.src = "images/PersonTestHair.png";
-//	redhair = new Image();
-//	redhair.src = "images/PersonTestHair.png";
-//	grayhair = new Image();
-//	grayhair.src = "images/PersonTestHair.png";
-//
-//	if(n == 0){
-//		g.drawImage(blackhair, m, 0);
-//	}
-//	else if(n == 3){
-//		g.drawImage(brownhair, m, 0);
-//	}
-//	else if(n == 7){
-//		g.drawImage(blondehair, m, 0);
-//	}
-//	else if(n == 11){
-//		g.drawImage(redhair, m, 0);
-//	}
-//	else if(n == 15){
-//		g.drawImage(grayhair, m, 0);
-//	}
-//}
+
 
 function startTimerTy(){
 	for(var i = 0; i < 6; i++){
