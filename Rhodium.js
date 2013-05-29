@@ -261,14 +261,14 @@ function instructionsClicked()
     if(instructionsButton.innerHTML == "Instructions")
     {
         instructionsButton.innerHTML = "High Scores";
-        highScoreForm.visibility = "hidden";
-        instructionsDiv.visibility = "visible";
+        highScoreForm.style.visibility = "hidden";
+        instructionsDiv.style.visibility = "visible";
     }
     else
     {
         instructionsButton.innerHTML = "Instructions";
-        highScoreForm.visibility = "visible";
-        instructionsDiv.visibility = "hidden";
+        highScoreForm.style.visibility = "visible";
+        instructionsDiv.style.visibility = "hidden";
     }
 }
                 
@@ -277,9 +277,16 @@ function optionsPage()
 //    alert("Options Page");
     splashScreenPageDiv.style.visibility = "hidden";
     optionsDiv.style.visibility = "visible";
+    highScoreForm.style.visibility = "visible";
     difficultySelection.style.visibility='visible';
+    if(nameField.value == ""){nameField.value = "Anonymous";}
 }
-                
+
+function clearNameField()
+{
+    nameField.value = "";
+}   
+    
 function splashScreen()
 {
     gradeFourSplashScreen.src = "images/MenuScreen.PNG";
@@ -323,6 +330,8 @@ function runGame()
     answer1.style.visibility = 'hidden';
     answer2.style.visibility = 'hidden';
     answer3.style.visibility = 'hidden';
+    instructionsDiv.style.visibility = "hidden";
+    highScoreForm.style.visibility = "hidden";
     initializeQuestions();
     optionsDiv.style.visibility = 'hidden';
 }

@@ -56,16 +56,16 @@ function taxi(){
     var taxiImage = new Image();
     taxiImage.src = "images/taxi.png";
     g.drawImage(taxiImage, taxiX, 410);
-    
-    var my_gradient=g.createRadialGradient(taxiX+32,410,2,taxiX+32,410,200);
-    my_gradient.addColorStop(0,"white");
-    my_gradient.addColorStop(1,"rgba(0, 0, 0, "+alpha+")");
-    g.fillStyle=my_gradient;
-    g.strokeStyle = "rgba(0,0,0,0)";
-    g.beginPath();
-    g.arc(taxiX+32, 410, 100,Math.PI,0);
-    g.stroke();
-    g.fill();
+//    
+//    var my_gradient=g.createRadialGradient(taxiX+32,410,2,taxiX+32,410,200);
+//    my_gradient.addColorStop(0,"white");
+//    my_gradient.addColorStop(1,"rgba(0, 0, 0, "+alpha+")");
+//    g.fillStyle=my_gradient;
+//    g.strokeStyle = "rgba(0,0,0,0)";
+//    g.beginPath();
+//    g.arc(taxiX+32, 410, 100,Math.PI,0);
+//    g.stroke();
+//    g.fill();
 //	g.fillStyle = "#ffff00";
 //  g.fillRect(taxiX, 410, 64, 128);	
 }

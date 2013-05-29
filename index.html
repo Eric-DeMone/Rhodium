@@ -27,7 +27,7 @@
                 <div id = "place9" style="border:2px solid #000000;"></div>
                 <div id = "place10" style="border:2px solid #000000;"></div>
             </form>
-            <div id = "instructionsDiv" style = "border:2px solid #000000;">(instructions)</div>
+            <div id = "instructionsDiv" style = "border:2px solid #000000;">Tu es dans un v&eacutehicule qui se trouve dans la rue. Votre but est de ramasser et d&eacuteposer des personnes et quelque fois des animaux. Pour avoir l'argent tu dois mettre le correct homophone dans les phrases. Si tu ne met pas les correct homophone tu perds ton gaz ou tu restes pour six minutes dans le jeu t'es finis. </div>
             <div id = "instructionsButton" style = "border:2px solid #000000;" onclick = "instructionsClicked();">Instructions</div>
             <div id = "optionsBackButton" onclick = "runGame();" style = "background-colour:FFFFFF">Main Menu</div>
             <p>
@@ -38,7 +38,7 @@
                     <option value ="3">Hard<br>
                 </select>
             </p>
-            Name: <input id = nameField onclick="" value = "Anonymous" type = "text">
+            Name: <input id = nameField onclick="clearNameField()" value = "Anonymous" type = "text">
         </div>
         <div id="pageDiv">
             <canvas id="bigCanvas" width="1024" height="600" style="border:1px solid">
