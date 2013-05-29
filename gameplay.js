@@ -6,9 +6,9 @@ var obstructiony = 700;
 var buildingArray = new Array(); var passengerArray = new Array(); var pedestrianArray = new Array();
 var obstructionImage = new Image();
 var alpha = 0;
-var red = 0;
-var green = 0;
-var blue = 0;
+var red = 150;
+var green = 180;
+var blue = 210;
 var numPassengers = 10;
 
 function render(){
@@ -37,6 +37,11 @@ function daynight(){
 	//g.fillStyle = "rgba(0,0,0,aplha)";
 	
 	g.fillStyle = "rgba("+red+","+green+","+blue+","+alpha+")";
+	g.fillStyle = "rgba(0,0,0,"+alpha+")";
+//    var my_gradient=g.createRadialGradient(0,0,410,1024,0,410);
+//    my_gradient.addColorStop(0,"white");
+//    my_gradient.addColorStop(1,"black");//rgba(0, 0, 0, 0)
+//    g.fillStyle=my_gradient;
 	g.fillRect(0, 0, 1024, 600);
 	//if(gametick == 1){
 	
@@ -51,6 +56,16 @@ function taxi(){
     var taxiImage = new Image();
     taxiImage.src = "images/taxi.png";
     g.drawImage(taxiImage, taxiX, 410);
+    
+    var my_gradient=g.createRadialGradient(taxiX+32,410,2,taxiX+32,410,200);
+    my_gradient.addColorStop(0,"white");
+    my_gradient.addColorStop(1,"rgba(0, 0, 0, "+alpha+")");
+    g.fillStyle=my_gradient;
+    g.strokeStyle = "rgba(0,0,0,0)";
+    g.beginPath();
+    g.arc(taxiX+32, 410, 100,Math.PI,0);
+    g.stroke();
+    g.fill();
 //	g.fillStyle = "#ffff00";
 //  g.fillRect(taxiX, 410, 64, 128);	
 }
@@ -241,6 +256,11 @@ function getBuildingSrc(){
 ////		alert("empty picture");
 //	}
 }
+
+function buildingScroll(){
+	
+}
+
 
 function startTimerTy(){
 	for(var i = 0; i < 6; i++){

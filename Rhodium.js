@@ -59,6 +59,10 @@ function changeLighting(n){
 	{
 		updateShading(Math.abs(((n-180)/180)) * 0.8);
 	}
+    if((difficulty == 1 && n == 120)||(difficulty == 2 && n == 240))
+    {
+        difficulty++;
+    }
 }
 
 function answered()
@@ -252,6 +256,22 @@ function resetStatus()
         }
 }
 
+function instructionsClicked()
+{
+    if(instructionsButton.innerHTML == "Instructions")
+    {
+        instructionsButton.innerHTML = "High Scores";
+        highScoreForm.visibility = "hidden";
+        instructionsDiv.visibility = "visible";
+    }
+    else
+    {
+        instructionsButton.innerHTML = "Instructions";
+        highScoreForm.visibility = "visible";
+        instructionsDiv.visibility = "hidden";
+    }
+}
+                
 function optionsPage()
 {
 //    alert("Options Page");
@@ -315,7 +335,7 @@ function playGame()
         playerName = nameField.value.substr(0, 10);
     }
     difficulty = difficultySelection.value;
-    if(difficulty=3)
+    if(difficulty==3)
     {
         money = 50;
     }

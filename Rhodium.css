@@ -1,3 +1,19 @@
+#instructionsDiv{
+    position:absolute;
+    left:784;
+    top:30;
+    width:220;
+    height:580;
+    visibility:hidden;
+    background-color:#ffffff;
+}
+#instructionsButton{
+    position:absolute;
+    left:684;
+    top:30;
+    height:20;
+    background-color:#ffffff;
+}
 body{
     margin:0;
 }
