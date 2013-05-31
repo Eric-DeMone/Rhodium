@@ -57,7 +57,7 @@ function changeLighting(n){
 	}
 	else
 	{
-		updateShading(Math.abs(((n-180)/180)) * 0.8);
+		updateShading(Math.abs(((n-180)/180)) * 0.5);
 	}
     if((difficulty == 1 && n == 120)||(difficulty == 2 && n == 240))
     {
@@ -191,7 +191,7 @@ function askQuestion()
 //    answer3.style.backgroundColor = "#ffffff";
     
     questionType = Math.floor(Math.random() * numHomophoneTypes);
-    questionNumber = Math.floor(Math.random() * 5);
+    questionNumber = Math.floor(Math.random() * 10);
     
     answerSelectionText.innerHTML = questionArray[questionType][questionNumber][true];
     
@@ -334,6 +334,7 @@ function runGame()
     highScoreForm.style.visibility = "hidden";
     initializeQuestions();
     optionsDiv.style.visibility = 'hidden';
+    buyGas.style.visibility = "hidden";
 }
 function playGame()
 {
@@ -391,15 +392,16 @@ function changeGas()
         gasAdded+=(gasChanger*-1);
         switch(difficulty)
         {
-                case 1:
-                money-=0.1;
-                break;
-                case 2:
-                money-=0.2;
-                break;
-                case 3:
-                money-=0.3;
-                break;
+        case 1:
+            money-=0.1;
+            break;
+        case 2:
+            money-=0.2;
+            break;
+        case 3:
+            alert("changed");
+            money-=0.3;
+            break;
         }
     }
 }
@@ -417,6 +419,14 @@ function update() {
     multiplier+=0.00001;
     score+=(difficulty*difficulty)*multiplier;
     gameRunning=true;
+    if(canGetGas())
+    {
+        buyGas.style.visibility = "visible";
+    }
+    else
+    {
+        buyGas.style.visibility = "hidden";
+    }
     if(gasPercent<0||((time/(1000/(10*((-1*difficulty)+4)))).toFixed(0))>360)
     {
         clearInterval(gameTick);
@@ -502,7 +512,7 @@ function initializeQuestions()
     {
         answerArray[i] = new Array();
         questionArray[i] = new Array();
-        for(var j = 0; j < 5; j++)
+        for(var j = 0; j < 10; j++)
         {
             questionArray[i][j] = new Array();
         }
@@ -511,8 +521,8 @@ function initializeQuestions()
     //answerArray[homophone set][number of questions in that set (first value only) OR value for each homophone (other members in array)]
     var a = 0;
     var on = 1;
-    answerArray[a][0] = 5;
-    answerArray[on][0] = 5;
+    answerArray[a][0] = 10;
+    answerArray[on][0] = 10;
     
     answerArray[a][1] = "a";
     answerArray[a][2] = "\xE0";
@@ -534,6 +544,24 @@ function initializeQuestions()
     questionArray[a][4][true] = "Tu verras ma maison, elle ___ des volet verts.";
     questionArray[a][4][false] = 0;
     
+    questionArray[a][5][true] = "Ta m&egravere a t&eacutel&eacutephon&eacute ___ plusieurs endroit.";
+    questionArray[a][5][false] = 1;
+    
+    questionArray[a][6][true] = "Il n'y ___ pas d'&eacutepicerie i&ccedili.";
+    questionArray[a][6][false] = 0;
+    
+    questionArray[a][7][true] = "Tu dois aller ___ Chertsey.";
+    questionArray[a][7][false] = 1;
+    
+    questionArray[a][8][true] = "Elle ___ manqu&eacute son vol de retour.";
+    questionArray[a][8][false] = 0;
+    
+    questionArray[a][9][true] = "Son chien a japp&eacute apr&egraves le chat d'___ c&ocirct&eacute.";
+    questionArray[a][9][false] = 1;
+    
+    
+    
+    
     questionArray[on][0][true] = "___ voulait aller &agrave l'op&eacutera, mais ils ont annul&eacute le r&eacutecital.";
     questionArray[on][0][false] = 0;
     
@@ -548,7 +576,28 @@ function initializeQuestions()
     
     questionArray[on][4][true] = "___ a tout essay&eacute pour le r&eacutecup&eacuterer.";
     questionArray[on][4][false] = 0;
+    
+    questionArray[on][5][true] = "Elles ___ mang&eacute trop de chocolat.";
+    questionArray[on][5][false] = 1;
+    
+    questionArray[on][6][true] = "___ n'a rien fait pour les en emp&ecirccher.";
+    questionArray[on][6][false] = 0;
+    
+    questionArray[on][7][true] = "";
+    questionArray[on][7][false] = 1;
+    
+    questionArray[on][8][true] = "";
+    questionArray[on][8][false] = 0;
+    
+    questionArray[on][9][true] = "";
+    questionArray[on][9][false] = 1;
 }
+
+
+
+
+
+
 
 
 

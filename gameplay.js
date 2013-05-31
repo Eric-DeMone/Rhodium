@@ -1,6 +1,6 @@
 var gameTick; var hasPassenger = false;
 var dodge = false;
-var taxiX = 544, dodgeCounter = 0;
+var taxiX = 544, dodgeCounter = 0, taxiCounter = 0;
 var y = 0, buildingy = -324, buildingy2 = 316, buildingy3 = -4; var passengery1=0;
 var obstructiony = 700;
 var buildingArray = new Array(); var passengerArray = new Array(); var pedestrianArray = new Array();
@@ -10,6 +10,7 @@ var red = 150;
 var green = 180;
 var blue = 210;
 var numPassengers = 10;
+var isGasStation = false;
 
 function render(){
     var canvas = document.getElementById("bigCanvas");
@@ -54,7 +55,18 @@ function taxi(){
 	var canvas = document.getElementById("bigCanvas");
     var g=canvas.getContext("2d");
     var taxiImage = new Image();
-    taxiImage.src = "images/taxi.png";
+    if(taxiX >= 544)
+    {
+        taxiCounter++;
+    }
+    if(taxiCounter%2==1)
+    {
+        taxiImage.src = "images/taxi.png";
+    }
+    else
+    {
+        taxiImage.src = "images/taxi2.png";
+    }
     g.drawImage(taxiImage, taxiX, 410);
 //    
 //    var my_gradient=g.createRadialGradient(taxiX+32,410,2,taxiX+32,410,200);
@@ -80,7 +92,7 @@ function sendObstruction(wasRight)
         dodge = true;
     }
     dodgeCounter=0;
-    obstructionImage.src = "images/Obstruction"+Math.floor(Math.random()*2+1)+".png";
+    obstructionImage.src = "images/Obstruction"+Math.floor(Math.random()*5+1)+".png";
     obstructiony=-50;
 }
 
@@ -116,6 +128,11 @@ function enviroment(){
     g.drawImage(obstructionImage, 551, obstructiony);
 }
 
+function canGetGas()
+{
+    return isGasStation;
+}
+
 function roadScroll(){
 	enviroment();
 	if(obstructiony<700)
@@ -124,6 +141,7 @@ function roadScroll(){
     }
     if(dodge)
     {
+        taxiCounter=0;
         if(taxiX > 514)
         {
             taxiX-=1;
@@ -143,6 +161,7 @@ function roadScroll(){
     }
     else if(taxiX < 544)
     {
+        taxiCounter=1;
         if(dodgeCounter<40)
         {
             dodgeCounter++;
@@ -180,6 +199,15 @@ function roadScroll(){
         buildingArray[4].src = getBuildingSrc();
         buildingArray[5].src = getBuildingSrc();
     }
+    isGasStation = false;
+    for(var i = 0; i<6; i++)
+    {
+        if(buildingArray[i].src == "images/building8.png")
+        {
+            isGasStation = true;
+        }
+    }
+    
     for(var i = 0; i<numPassengers; i++){
         passengerArray[i][1] += 4 + passengerArray[i][3];
         if(passengerArray[i][1]>=640){
@@ -193,7 +221,14 @@ function roadScroll(){
                 passengerArray[i][2]=Math.floor(Math.random()*64+288);
             }
             passengerArray[i][1]=(Math.floor(Math.random()*-500 - 50));//(Math.floor(Math.random()*-64));
-            passengerArray[i][0].src = getPassengerSrc();
+            if((passengerArray[i][3]==0&&Math.floor(Math.random()*2)==1)||passengerArray[i][3]==-1)
+            {
+                passengerArray[i][0].src = getPassengerSrcBackwards();
+            }
+            else
+            {
+                passengerArray[i][0].src = getPassengerSrc();
+            }
         }
     }
 }
@@ -207,8 +242,12 @@ function passengerSpawn(){
     x = 0;
 	
 }
+function getPassengerSrcBackwards(){
+	return "images/bPerson" + Math.floor(Math.random() * 4 + 1) + ".png";
+	
+}
 function getPassengerSrc(){
-	return "images/person" + Math.floor(Math.random() * 6 + 1) + ".png";
+	return "images/Person" + Math.floor(Math.random() * 4 + 1) + ".png";
 	
 }
 function pedestrianSpawn(){
@@ -271,9 +310,16 @@ function startTimerTy(){
     for(var i = 0; i < numPassengers; i++){
         passengerArray[i] = new Array();
 		passengerArray[i][0] = new Image();
-		passengerArray[i][0].src = getPassengerSrc();
         passengerArray[i][1] = Math.floor(Math.random() * -700 - 50);
         passengerArray[i][3] = Math.floor(Math.random() * 3 - 1);
+        if((passengerArray[i][3]==0&&Math.floor(Math.random()*2)==1)||passengerArray[i][3]==-1)
+        {
+            passengerArray[i][0].src = getPassengerSrcBackwards();
+        }
+        else
+        {
+            passengerArray[i][0].src = getPassengerSrc();
+        }
         if(Math.floor(Math.random()*2)==0)
         {
             passengerArray[i][2] = Math.floor(Math.random() * 64 + 640);
