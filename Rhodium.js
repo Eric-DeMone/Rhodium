@@ -59,9 +59,17 @@ function changeLighting(n){
 	{
 		updateShading(Math.abs(((n-180)/180)) * 0.5);
 	}
-    if((difficulty == 1 && n == 120)||(difficulty == 2 && n == 240))
+    if((difficulty == 1 && n == 120))
     {
         difficulty++;
+        alert(difficulty);
+        time = time*(3/2);
+    }
+    else if((difficulty == 2 && n == 240))
+    {
+        difficulty++;
+        alert(difficulty);
+        time = time*2;
     }
 }
 
@@ -418,7 +426,7 @@ function update() {
     {
         buyGas.style.visibility = "hidden";
     }
-    if(gasPercent<0||((time/(1000/(10*((-1*difficulty)+4)))).toFixed(0))>360)
+    if(gasPercent<0||((time/(50/(10*((-1*difficulty)+4)))).toFixed(0))>360)
     {
         clearInterval(gameTick);
         gasPercent=0;
@@ -427,10 +435,10 @@ function update() {
     }
     if(gameRunning)
     {
-        numberDiv.innerHTML = ("Time: "+((time/(1000/(10*((-1*difficulty)+4)))).toFixed(0))+"<br>Score: "+score.toFixed(0));
+        numberDiv.innerHTML = ("Time: "+((time/(50/(10*((-1*difficulty)+4)))).toFixed(0))+"<br>Score: "+score.toFixed(0));
         moneyP.innerHTML = money.toFixed(2)+"$";
         
-		changeLighting(((time/(1000/(10*((-1*difficulty)+4)))).toFixed(0)));
+		changeLighting(((time/(50/(10*((-1*difficulty)+4)))).toFixed(0)));
 		
 //        var drawingCanvas = document.getElementById('gasCanvas');
 //        var context = drawingCanvas.getContext("2d");
@@ -450,7 +458,7 @@ function update() {
     }
     else
     {
-        numberDiv.innerHTML = ((time/(1000/(10*((-1*difficulty)+4)))).toFixed(0));
+        numberDiv.innerHTML = ((time/(50/(10*((-1*difficulty)+4)))).toFixed(0));
         clearInterval(gameTick);
         checkHighScore();
         runGame();

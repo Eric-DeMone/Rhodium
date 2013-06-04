@@ -187,16 +187,19 @@ function roadScroll(){
     if(buildingy==640){
         buildingy=-320;
         buildingArray[0].src = getBuildingSrc();
+        if(buildingArray[0].src.indexOf("images/building8.png") != -1){isGasStation=true;}
         buildingArray[1].src = getBuildingSrc();
     }
     if(buildingy2==640){
         buildingy2=-320;
         buildingArray[2].src = getBuildingSrc();
+        if(buildingArray[2].src.indexOf("images/building8.png") != -1){isGasStation=true;}
         buildingArray[3].src = getBuildingSrc();
     }
     if(buildingy3==640){
         buildingy3=-320;
         buildingArray[4].src = getBuildingSrc();
+        if(buildingArray[4].src.indexOf("images/building8.png") != -1){isGasStation=true;}
         buildingArray[5].src = getBuildingSrc();
     }
     isGasStation = false;
