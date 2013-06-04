@@ -390,19 +390,10 @@ function changeGas()
     if(gasChanger<0&&money>0)
     {
         gasAdded+=(gasChanger*-1);
-        switch(difficulty)
-        {
-        case 1:
-            money-=0.1;
-            break;
-        case 2:
-            money-=0.2;
-            break;
-        case 3:
-            alert("changed");
-            money-=0.3;
-            break;
-        }
+        if(difficulty==1){money-=0.1;}
+        else if(difficulty==2){money-=0.2}
+        else{money-=0.3;}
+        if(money<0){money=0;}
     }
 }
 function tick() {

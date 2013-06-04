@@ -202,7 +202,7 @@ function roadScroll(){
     isGasStation = false;
     for(var i = 0; i<6; i++)
     {
-        if(buildingArray[i].src == "images/building8.png")
+        if(buildingArray[i].src.indexOf("images/building8.png") != -1)
         {
             isGasStation = true;
         }
@@ -288,7 +288,16 @@ function buildingSpawn(){
 
 function getBuildingSrc(){
 //	if(Math.floor(Math.random()*9) != 0){
-		return "images/building"+(Math.floor(Math.random()*8)+1)+".png";
+    
+    if(isGasStation)
+    {
+		return "images/building"+(Math.floor(Math.random()*7)+1)+".png";
+    }
+    else
+    {
+        return "images/building"+(Math.floor(Math.random()*8)+1)+".png";
+    }
+    
 //	}
 //	else{
 //		return "";
