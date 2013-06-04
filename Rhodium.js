@@ -27,29 +27,7 @@ var answerArray = new Array();
 function selected(n)
 {
     selectedDiv=n;
-//    answer1.style.backgroundColor = "#ffffff";
-//    answer2.style.backgroundColor = "#ffffff";
-//    answer3.style.backgroundColor = "#ffffff";
-//    switch(n)
-//    {
-//        case 1:
-//        answer1.style.backgroundColor="#cccccc";
-//        break;
-//        case 2:
-//        answer2.style.backgroundColor="#cccccc";
-//        break;
-//        case 3:
-//        answer3.style.backgroundColor="#cccccc";
-//        break;
-//    }
-//    if(selectedDiv == n)
-//    {
-        answered();
-//    }
-//    else
-//    {
-//        selectedDiv=n;
-//    }
+    answered();
 }
 
 function changeLighting(n){
@@ -62,13 +40,11 @@ function changeLighting(n){
     if((difficulty == 1 && n == 120))
     {
         difficulty++;
-        alert(difficulty);
         time = time*(3/2);
     }
     else if((difficulty == 2 && n == 240))
     {
         difficulty++;
-        alert(difficulty);
         time = time*2;
     }
 }
@@ -426,7 +402,7 @@ function update() {
     {
         buyGas.style.visibility = "hidden";
     }
-    if(gasPercent<0||((time/(50/(10*((-1*difficulty)+4)))).toFixed(0))>360)
+    if(gasPercent<0||((time/(500/(10*((-1*difficulty)+4)))).toFixed(0))>360)
     {
         clearInterval(gameTick);
         gasPercent=0;
@@ -435,10 +411,10 @@ function update() {
     }
     if(gameRunning)
     {
-        numberDiv.innerHTML = ("Time: "+((time/(50/(10*((-1*difficulty)+4)))).toFixed(0))+"<br>Score: "+score.toFixed(0));
+        numberDiv.innerHTML = ("Time: "+((time/(500/(10*((-1*difficulty)+4)))).toFixed(0))+"<br>Score: "+score.toFixed(0));
         moneyP.innerHTML = money.toFixed(2)+"$";
         
-		changeLighting(((time/(50/(10*((-1*difficulty)+4)))).toFixed(0)));
+		changeLighting(((time/(500/(10*((-1*difficulty)+4)))).toFixed(0)));
 		
 //        var drawingCanvas = document.getElementById('gasCanvas');
 //        var context = drawingCanvas.getContext("2d");
