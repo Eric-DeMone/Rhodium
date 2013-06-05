@@ -11,6 +11,7 @@ var green = 180;
 var blue = 210;
 var numPassengers = 10;
 var isGasStation = false;
+var carSource = "images/taxi.png";
 
 function render(){
     var canvas = document.getElementById("bigCanvas");
@@ -61,11 +62,14 @@ function taxi(){
     }
     if(taxiCounter%2==1)
     {
-        taxiImage.src = "images/taxi.png";
+        taxiImage.src = carSource;
     }
     else
     {
-        taxiImage.src = "images/taxi2.png";
+        if(carSource=="images/taxi.png"){taxiImage.src = "images/taxi2.png";}
+        if(carSource=="images/truck.png"){taxiImage.src = "images/truck2.png";}
+        if(carSource=="images/bus.png"){taxiImage.src = "images/bus2.png";}
+        if(carSource=="images/limo.png"){taxiImage.src = "images/limo2.png";}
     }
     g.drawImage(taxiImage, taxiX, 410);
 //    

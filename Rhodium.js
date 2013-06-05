@@ -348,10 +348,22 @@ function playGame()
 
 function carImageClicked()
 {
-    if(carSelection.value==1){carImage.src = "images/taxiImg.png";}
-    else if(carSelection.value==2){carImage.src = "images/truckImg.png";}
-    else if(carSelection.value==3){carImage.src = "images/busImg.png";}
-    else if(carSelection.value==4){carImage.src = "images/limoImg.png";}
+    if(carSelection.value==1){
+        carImage.src = "images/taxiImg.png";
+        carSource = "images/taxi.png";
+    }
+    else if(carSelection.value==2){
+        carImage.src = "images/truckImg.png";
+        carSource = "images/truck.png";
+    }
+    else if(carSelection.value==3){
+        carImage.src = "images/busImg.png";
+        carSource = "images/bus.png";
+    }
+    else if(carSelection.value==4){
+        carImage.src = "images/limoImg.png";
+        carSource = "images/limo.png";
+    }
 }
 
 function addGas()
