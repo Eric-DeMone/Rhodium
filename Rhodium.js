@@ -346,7 +346,13 @@ function playGame()
     askQuestion();
 }
 
-
+function carImageClicked()
+{
+    if(carSelection.value==1){carImage.src = "images/taxiImg.png";}
+    else if(carSelection.value==2){carImage.src = "images/truckImg.png";}
+    else if(carSelection.value==3){carImage.src = "images/busImg.png";}
+    else if(carSelection.value==4){carImage.src = "images/limoImg.png";}
+}
 
 function addGas()
 {

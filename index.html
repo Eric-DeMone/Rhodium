@@ -39,6 +39,16 @@
                 </select>
             </p>
             Name: <input id = nameField onclick="clearNameField()" value = "Anonymous" type = "text">
+            <p id = "carSelect">
+                Vehicle:
+                <select id = "carSelection" name = "carSelection" onclick = "carImageClicked()" onload = "carImageClicked()">
+                    <option value="1">Taxi<br>
+                    <option value="2">Truck<br>
+                    <option value ="3">Bus<br>
+                    <option value = "4">Limo<br>
+                </select>
+                <img id = "carImage"></img>
+            </p>
         </div>
         <div id="pageDiv">
             <canvas id="bigCanvas" width="1024" height="600" style="border:1px solid">
