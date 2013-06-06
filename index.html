@@ -7,7 +7,7 @@
     </head>
     <body>
         <div id="splashScreenPageDiv">
-            <img id = "gradeFourSplashScreen" src = "images/SplashScreen.png" onclick="splashScreen()"></img>
+            <img id = "gradeFourSplashScreen" src = "images/SplashScreen.png" onclick="splashScreen()">
             <form id = "mainMenuForm">
                 <div id = "play" onclick="playGame()" style="hidden"></div>
                 <div id = "options" onclick="optionsPage()" style="hidden"></div>
@@ -16,7 +16,7 @@
         </div>
         <div id = "optionsDiv" style="background-color:FFFF99;">
             <form id = "highScoreForm">
-                <div id = "place1" style="border:2px solid #000000;"><img id = "place1Img" src = "images/taxiImg.png" height = "36" width = "auto"></div>
+                <div id = "place1" style="border:2px solid #000000;"></div>
                 <div id = "place2" style="border:2px solid #000000;"></div>
                 <div id = "place3" style="border:2px solid #000000;"></div>
                 <div id = "place4" style="border:2px solid #000000;"></div>
@@ -29,40 +29,52 @@
             </form>
             <div id = "instructionsDiv" style = "border:2px solid #000000;">Tu es dans un v&eacutehicule qui se trouve dans la rue. Votre but est de ramasser et d&eacuteposer des personnes et quelque fois des animaux. Pour avoir l'argent tu dois mettre le correct homophone dans les phrases. Si tu ne met pas les correct homophone tu perds ton gaz ou tu restes pour six minutes dans le jeu t'es finis. </div>
             <div id = "instructionsButton" style = "border:2px solid #000000;" onclick = "instructionsClicked();">Instructions</div>
-            <div id = "optionsBackButton" onclick = "runGame();" style = "background-colour:FFFFFF">Main Menu</div>
-            <p>
-                Difficulty:
-                <select id = "difficultySelection" name = difficultySelection>
-                    <option value="1">Easy<br>
-                    <option value="2">Medium<br>
-                    <option value ="3">Hard<br>
-                </select>
-            </p>
-            Name: <input id = nameField onclick="clearNameField()" value = "Anonymous" type = "text">
-            <p id = "carSelect">
-                Vehicle:
-                <select id = "carSelection" name = "carSelection" onclick = "carImageClicked()" onload = "carImageClicked()">
-                    <option value="1">Taxi<br>
-                    <option value="2">Truck<br>
-                    <option value ="3">Bus<br>
-                    <option value = "4">Limo<br>
-                </select>
-                <img id = "carImage" src="images/taxiImg.png"></img>
-            </p>
+            <div id = "optionsBackButton" onclick = "runGame();" style = "background-colour:FFFFFF">Menu Principal</div>
+            <div id = playerDetailsDiv>
+                <p>
+                    Difficulty:
+                    <select id = "difficultySelection" name = difficultySelection>
+                        <option value="1">Facile<br>
+                        <option value="2">Moyen<br>
+                        <option value ="3">Difficile<br>
+                    </select>
+                </p>
+                <p>
+                </p>
+                Nom: <input id = nameField onclick="clearNameField()" value = "Anonyme" type = "text">
+                <p id = "carSelect">
+                    V&eacutehicle:
+                    <select id = "carSelection" name = "carSelection" onclick = "carImageClicked()" onload = "carImageClicked()">
+                        <option value="1">Taxi<br>
+                        <option value="2">Camion<br>
+                        <option value ="3">Autobus<br>
+                        <option value = "4">Limousine<br>
+                    </select>
+                    <img id = "carImage" src="images/taxiImg.png">
+                </p>
+                <p>
+                    Portrait:
+                    <div id ="manPicture" onclick="portraitClicked(0)">
+                        <img id="manPortrait" src="images/man.png">
+                    </div>
+                    <div id ="womanPicture" onclick="portraitClicked(1)">
+                        <img id="womanPortrait" src="images/woman.png">
+                    </div>
+                </p>
+            </div>
         </div>
         <div id="pageDiv">
-            <canvas id="bigCanvas" width="1024" height="600" style="border:1px solid">
-            Oh noes! an error! Also Timon's High Score is 1834 (on easy)!
-            </canvas>
+            <canvas id="bigCanvas" width="1024" height="600" style="border:1px solid"></canvas>
             <form id = "numericStats">
                 <div id="numberDiv">0</div>
                 <p id = moneyP>0$</p>
-                <div id="buyGas" onclick="addGas()" style="border:2px solid #000000;">Buy gas!</div>
+                <div id="buyGas" onclick="addGas()" style="border:2px solid #000000;">Acheter du gaz!</div>
             </form>
 <!--            <canvas id="gasCanvas" width = "100" height = "50" style="border:1px solid #c3c3c3;" ></canvas><br>-->
     <!--        <button id="addGas" onclick="addGas()">Add Gas!</button>-->
             <div id = "gamePage" width = "1024" height = "600"></div>
             <image id="obstructionImage" src ="images/Obstruction1.PNG"></image>
+            <img id = "portraitGameImage" src ="images/man.png">
             <form id = "answerSelection">
                 <p id = answerSelectionText>This is a question?</p><br>
                 <div id="answer1" style="border:2px solid #000000;" onclick="selected(1)">Answer 1</div><br>
@@ -71,7 +83,7 @@
                 <div id = "gasImageDiv">
                     <image id="gasImage" src ="images/gasMeter.PNG"></image>   
                 </div>
-                <p id = statusP>Pick up a passenger!</p>
+                <p id = statusP>Ramassez le passager!</p>
     <!--
                 <input id = "ans1" onclick="answered()" type="radio" name="ans" value="1" checked><p id = answer1>Answer 1</p>
                 <input id = "ans2" onclick="answered()" type="radio" name="ans" value="2"><p id = answer2>Answer 2</p>

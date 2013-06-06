@@ -1,5 +1,5 @@
 var highScoreArray = new Array();
-var numHomophoneTypes = 2;
+var numHomophoneTypes = 3;
 var time = 0;
 var gasPercent = 0;
 var difficulty = 3;
@@ -19,10 +19,28 @@ var status = 1;
 var influence = 0;
 var score = 0;
 var firstRun = true;
-var playerName = "Anonymous";
+var playerName = "Anonyme";
 
 var questionArray = new Array();
 var answerArray = new Array();
+var portraitNum = 0;
+
+function portraitClicked(n)
+{
+    portraitNum=n;
+    if(n==0)
+    {
+        manPicture.style.border = "2px solid #33FF33";
+        womanPicture.style.border = "2px solid #FFFF99";
+        portraitGameImage.src="images/man.png";
+    }
+    else
+    {
+        manPicture.style.border = "2px solid #FFFF99";
+        womanPicture.style.border = "2px solid #33FF33";
+        portraitGameImage.src="images/woman.png";
+    }
+}
 
 function selected(n)
 {
@@ -127,14 +145,14 @@ function answered()
             }
             else if(status == 2)
             {
-                statusP.innerHTML = "Drop off passenger!";
+                statusP.innerHTML = "D&eacuteposez le passager!";
                 status=3;
             }
             else
             {
                 status=1;
                 money+=influence;
-                statusP.innerHTML = "Pick up passenger!";
+                statusP.innerHTML = "Ramassez le passager!";
                 setHasPassenger(false);
             }
             score+=difficulty*difficulty*20;
@@ -143,7 +161,7 @@ function answered()
         {
 //                 alert("Wrong");
             score-=difficulty*difficulty*80;
-            if(statusP.innerHTML=="Transport passenger!")
+            if(statusP.innerHTML=="Transportez le passager!")
             {
                 sendObstruction(false);
                 setTimeout(function(){askQuestion()}, 3700);
@@ -228,15 +246,15 @@ function resetStatus()
 {
     if(status == 1)
         {
-            statusP.innerHTML = "Transport passenger!";
+            statusP.innerHTML = "Transport le passager!";
         }
         else if(status == 2)
         {
-            statusP.innerHTML = "Drop off passenger!";
+            statusP.innerHTML = "D&eacuteposez le passager!";
         }
         else
         {
-            statusP.innerHTML = "Pick up passenger!";
+            statusP.innerHTML = "Ramassez le passager!";
         }
 }
 
@@ -244,7 +262,7 @@ function instructionsClicked()
 {
     if(instructionsButton.innerHTML == "Instructions")
     {
-        instructionsButton.innerHTML = "High Scores";
+        instructionsButton.innerHTML = "Highscores";
         highScoreForm.style.visibility = "hidden";
         instructionsDiv.style.visibility = "visible";
     }
@@ -263,7 +281,7 @@ function optionsPage()
     optionsDiv.style.visibility = "visible";
     highScoreForm.style.visibility = "visible";
     difficultySelection.style.visibility='visible';
-    if(nameField.value == ""){nameField.value = "Anonymous";}
+    if(nameField.value == ""){nameField.value = "Anonyme";}
 }
 
 function clearNameField()
@@ -278,7 +296,7 @@ function splashScreen()
     for(var i = 0; i < 10; i++)
     {
         highScoreArray[(i*-1)+9] = 500 * i + 500;
-        highScoreArray[(i*-1)+19] = "Anonymous";
+        highScoreArray[(i*-1)+19] = "Anonyme";
     }
     updateHighScore();
 }
@@ -291,7 +309,7 @@ function quit()
 
 function runGame()
 {
-    playerName = "Anonymous";
+    playerName = "Anonyme";
     selectedDiv = 0;
     status = 1;
     influence = 0;
@@ -501,7 +519,7 @@ function updateHighScore()
 
 function initializeQuestions()
 {
-    for(var i = 0; i < 2; i++)
+    for(var i = 0; i < numHomophoneTypes; i++)
     {
         answerArray[i] = new Array();
         questionArray[i] = new Array();
@@ -514,13 +532,17 @@ function initializeQuestions()
     //answerArray[homophone set][number of questions in that set (first value only) OR value for each homophone (other members in array)]
     var a = 0;
     var on = 1;
+    var son = 2;
     answerArray[a][0] = 10;
     answerArray[on][0] = 10;
+    answerArray[son][0] = 10;
     
     answerArray[a][1] = "a";
     answerArray[a][2] = "\xE0";
     answerArray[on][1] = "on";
     answerArray[on][2] = "ont";
+    answerArray[son][1] = "son";
+    answerArray[son][2] = "sont";
     
     questionArray[a][0][true] = "Hugues ___ d&eacutecid&eacute de suivre descours de guitare.";
     questionArray[a][0][false] = 0;
@@ -576,20 +598,57 @@ function initializeQuestions()
     questionArray[on][6][true] = "___ n'a rien fait pour les en emp&ecirccher.";
     questionArray[on][6][false] = 0;
     
-    questionArray[on][7][true] = "";
+    questionArray[on][7][true] = "Ils ___ tent&eacute de nous aider.";
     questionArray[on][7][false] = 1;
     
-    questionArray[on][8][true] = "";
+    questionArray[on][8][true] = "___ y va avec la famille et les amis.";
     questionArray[on][8][false] = 0;
     
-    questionArray[on][9][true] = "";
+    questionArray[on][9][true] = "Les skieurs ___ de plaisir avec cette nouvelle neige.";
     questionArray[on][9][false] = 1;
+                
+                
+                
+                
+    questionArray[son][0][true] = "Son";
+    questionArray[son][0][false] = 0;
+    
+    questionArray[son][1][true] = "Sont";
+    questionArray[son][1][false] = 1;
+    
+    questionArray[son][2][true] = "Son";
+    questionArray[son][2][false] = 0;
+    
+    questionArray[son][3][true] = "Sont";
+    questionArray[son][3][false] = 1;
+    
+    questionArray[son][4][true] = "Son";
+    questionArray[son][4][false] = 0;
+    
+    questionArray[son][5][true] = "Sont";
+    questionArray[son][5][false] = 1;
+    
+    questionArray[son][6][true] = "Son";
+    questionArray[son][6][false] = 0;
+    
+    questionArray[son][7][true] = "Sont";
+    questionArray[son][7][false] = 1;
+    
+    questionArray[son][8][true] = "Son";
+    questionArray[son][8][false] = 0;
+    
+    questionArray[son][9][true] = "Sont";
+    questionArray[son][9][false] = 1;
 }
 
 
 
 
 
+                
+                
+                
+                
 
 
 
