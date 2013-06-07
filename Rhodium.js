@@ -123,7 +123,7 @@ function answered()
         if(isCorrect==true)
         {
 //                alert("Right");
-            if(statusP.innerHTML=="Transport passenger!")
+            if(statusP.innerHTML=="Transportez le passager!")
             {
                 sendObstruction(true);
 //                sendObstruction(true, Math.floor(Math.random()*1));
@@ -135,7 +135,7 @@ function answered()
             }
             if(status == 1)
             {
-                statusP.innerHTML = "Transport passenger!";
+                statusP.innerHTML = "Transportez le passager!";
                 if(Math.floor(Math.random()*4) == 0 && influence>9*difficulty)
                 {
                    status=2; 
@@ -246,7 +246,7 @@ function resetStatus()
 {
     if(status == 1)
         {
-            statusP.innerHTML = "Transport le passager!";
+            statusP.innerHTML = "Transportez le passager!";
         }
         else if(status == 2)
         {
@@ -282,6 +282,7 @@ function optionsPage()
     highScoreForm.style.visibility = "visible";
     difficultySelection.style.visibility='visible';
     if(nameField.value == ""){nameField.value = "Anonyme";}
+    portraitGameImage.style.visibility = "hidden";
 }
 
 function clearNameField()
@@ -318,6 +319,7 @@ function runGame()
     resetStatus();
     bigCanvas.style.visibility = 'hidden';
     splashScreenPageDiv.style.visibility = "visible";
+    portraitGameImage.style.visibility = "hidden";
     if(!firstRun)
     {
         mainMenuForm.style.visibility = "visible";
@@ -352,6 +354,7 @@ function playGame()
         money = 50;
     }
 //    gasCanvas.style.visibility='visible';
+    portraitGameImage.style.visibility = "visible";
     splashScreenPageDiv.style.visibility='hidden';
     mainMenuForm.style.visibility='hidden';
     answerSelection.style.visibility = 'visible';

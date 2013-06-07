@@ -213,7 +213,9 @@ body{
     font-size:30;
 }
 #buyGas{
-     color:#000000;
+    color:#000000;
+    font-size:16;
+    width:auto;
 }
 #statusP{
     font-family: Arial,Helvetica,sans-serif;
