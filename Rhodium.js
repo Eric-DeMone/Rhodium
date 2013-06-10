@@ -1,5 +1,5 @@
 var highScoreArray = new Array();
-var numHomophoneTypes = 3;
+var numHomophoneTypes = 4;
 var time = 0;
 var gasPercent = 0;
 var difficulty = 3;
@@ -534,9 +534,11 @@ function initializeQuestions()
     var a = 0;
     var on = 1;
     var son = 2;
+    var sa = 3;
     answerArray[a][0] = 10;
     answerArray[on][0] = 10;
     answerArray[son][0] = 10;
+    answerArray[sa][0] = 10;     
     
     answerArray[a][1] = "a";
     answerArray[a][2] = "\xE0";
@@ -544,6 +546,8 @@ function initializeQuestions()
     answerArray[on][2] = "ont";
     answerArray[son][1] = "son";
     answerArray[son][2] = "sont";
+    answerArray[sa][1] = "sa";
+    answerArray[sa][2] = "\xE7a";
     
     questionArray[a][0][true] = "Hugues ___ d&eacutecid&eacute de suivre descours de guitare.";
     questionArray[a][0][false] = 0;
@@ -575,9 +579,6 @@ function initializeQuestions()
     questionArray[a][9][true] = "Son chien a japp&eacute apr&egraves le chat d'___ c&ocirct&eacute.";
     questionArray[a][9][false] = 1;
     
-    
-    
-    
     questionArray[on][0][true] = "___ voulait aller &agrave l'op&eacutera, mais ils ont annul&eacute le r&eacutecital.";
     questionArray[on][0][false] = 0;
     
@@ -606,10 +607,7 @@ function initializeQuestions()
     questionArray[on][8][false] = 0;
     
     questionArray[on][9][true] = "Les skieurs ___ de plaisir avec cette nouvelle neige.";
-    questionArray[on][9][false] = 1;
-                
-                
-                
+    questionArray[on][9][false] = 1;         
                 
     questionArray[son][0][true] = "Ce sont des g&acircteaux de ___ commerce.";
     questionArray[son][0][false] = 0;
@@ -623,23 +621,57 @@ function initializeQuestions()
     questionArray[son][3][true] = "Ces fleurs ___ comestibles.";
     questionArray[son][3][false] = 1;
     
-    questionArray[son][4][true] = "Son";
+    questionArray[son][4][true] = "Le sac &agrave dos de ___ ami est trol rempli!";
     questionArray[son][4][false] = 0;
     
-    questionArray[son][5][true] = "___-ils toujours";
+    questionArray[son][5][true] = "___-ils toujours montr&eacutes sur son lit?";
     questionArray[son][5][false] = 1;
     
-    questionArray[son][6][true] = "Son";
+    questionArray[son][6][true] = "C'est donc ___ probl&egraveme &agrave elle.";
     questionArray[son][6][false] = 0;
     
-    questionArray[son][7][true] = "Sont";
+    questionArray[son][7][true] = "Ces bottes ___ trop grandes.";
     questionArray[son][7][false] = 1;
     
-    questionArray[son][8][true] = "Son";
+    questionArray[son][8][true] = "Elle ne d&eacutepassera pas ___ budget.";
     questionArray[son][8][false] = 0;
     
-    questionArray[son][9][true] = "Sont";
+    questionArray[son][9][true] = "Ce ___ ses pantalons, ils sont bleus.";
     questionArray[son][9][false] = 1;
+    
+                
+                
+                
+                
+    questionArray[sa][0][true] = "Jacob a d&eacutechir&eacute ___ chemise.";
+    questionArray[sa][0][false] = 0;
+    
+    questionArray[sa][1][true] = "Il se promenait comme ___.";
+    questionArray[sa][1][false] = 1;
+    
+    questionArray[sa][2][true] = "Camille aime se retrouver seule dans ___ chambre.";
+    questionArray[sa][2][false] = 0;
+    
+    questionArray[sa][3][true] = "C'est ___ qui lui donne des id&eacutees.";
+    questionArray[sa][3][false] = 1;
+    
+    questionArray[sa][4][true] = "C'est ___ soupe pr&eacutef&eacuter&eacutee.";
+    questionArray[sa][4][false] = 0;
+    
+    questionArray[sa][5][true] = "___ alors!";
+    questionArray[sa][5][false] = 1;
+    
+    questionArray[sa][6][true] = "Nicolas a fait r&eacuteparer ___ bicyclette.";
+    questionArray[sa][6][false] = 0;
+    
+    questionArray[sa][7][true] = "Pouvez-vous me trancher un demi-kilo de ___?";
+    questionArray[sa][7][false] = 1;
+    
+    questionArray[sa][8][true] = "Il a apport&eacute ___ boussole.";
+    questionArray[sa][8][false] = 0;
+    
+    questionArray[sa][9][true] = "___ va bien!";
+    questionArray[sa][9][false] = 1;
 }
 
 
