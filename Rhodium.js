@@ -58,12 +58,10 @@ function changeLighting(n){
     if((difficulty == 1 && n == 120))
     {
         difficulty++;
-        time = time*(3/2);
     }
     else if((difficulty == 2 && n == 240))
     {
         difficulty++;
-        time = time*2;
     }
 }
 
@@ -205,11 +203,11 @@ function askQuestion()
             document.getElementById("answer1").innerHTML = answerArray[questionType][(questionArray[questionType][questionNumber][false]) + 1];
             var temp = document.getElementById("answer1").innerHTML;
             do{
-                document.getElementById("answer2").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+                document.getElementById("answer2").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
             }
             while(temp == document.getElementById("answer2").innerHTML);
             do{
-                document.getElementById("answer3").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+                document.getElementById("answer3").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
             }
             while(document.getElementById("answer3").innerHTML == document.getElementById("answer2").innerHTML || temp == document.getElementById("answer3").innerHTML);
         }
@@ -218,11 +216,11 @@ function askQuestion()
             document.getElementById("answer2").innerHTML = answerArray[questionType][(questionArray[questionType][questionNumber][false]) + 1];
             var temp = document.getElementById("answer2").innerHTML;
             do{
-                document.getElementById("answer1").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+                document.getElementById("answer1").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
             }
             while(temp == document.getElementById("answer1").innerHTML);
             do{
-                document.getElementById("answer3").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+                document.getElementById("answer3").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
             }
             while(document.getElementById("answer3").innerHTML == document.getElementById("answer1").innerHTML || temp == document.getElementById("answer3").innerHTML);
         }
@@ -231,11 +229,11 @@ function askQuestion()
             document.getElementById("answer3").innerHTML = answerArray[questionType][(questionArray[questionType][questionNumber][false]) + 1];
             var temp = document.getElementById("answer3").innerHTML;
             do{
-                document.getElementById("answer2").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+                document.getElementById("answer2").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
             }
             while(temp == document.getElementById("answer2").innerHTML);
             do{
-                document.getElementById("answer1").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * numHomophoneTypes) + 1];
+                document.getElementById("answer1").innerHTML = answerArray[Math.floor(Math.random() * numHomophoneTypes)][Math.floor(Math.random() * 2) + 1];
             }
             while(document.getElementById("answer1").innerHTML == document.getElementById("answer2").innerHTML || temp == document.getElementById("answer1").innerHTML);
         }
@@ -405,7 +403,7 @@ function addGas()
     }
 }
 function startTimer() {
-    gameTick = window.setInterval(function(){requestAnimationFrame(tick)}, 10*((-1*difficulty)+4));
+    gameTick = window.setInterval(function(){requestAnimationFrame(tick)}, 40);
 }
 function changeGas()
 {
@@ -441,7 +439,7 @@ function update() {
     {
         buyGas.style.visibility = "hidden";
     }
-    if(gasPercent<0||((time/(500/(10*((-1*difficulty)+4)))).toFixed(0))>360)
+    if(gasPercent<0||((time/40).toFixed(0))>360)
     {
         clearInterval(gameTick);
         gasPercent=0;
@@ -450,10 +448,10 @@ function update() {
     }
     if(gameRunning)
     {
-        numberDiv.innerHTML = ("Time: "+((time/(500/(10*((-1*difficulty)+4)))).toFixed(0))+"<br>Score: "+score.toFixed(0));
+        numberDiv.innerHTML = ("Temps: "+((time/40).toFixed(0))+"<br>Score: "+score.toFixed(0));
         moneyP.innerHTML = money.toFixed(2)+"$";
         
-		changeLighting(((time/(500/(10*((-1*difficulty)+4)))).toFixed(0)));
+		changeLighting(((time/40).toFixed(0)));
 		
 //        var drawingCanvas = document.getElementById('gasCanvas');
 //        var context = drawingCanvas.getContext("2d");
@@ -473,9 +471,9 @@ function update() {
     }
     else
     {
-        numberDiv.innerHTML = ((time/(50/(10*((-1*difficulty)+4)))).toFixed(0));
         clearInterval(gameTick);
         checkHighScore();
+        
         runGame();
     }
 }
@@ -613,22 +611,22 @@ function initializeQuestions()
                 
                 
                 
-    questionArray[son][0][true] = "Son";
+    questionArray[son][0][true] = "Ce sont des g&acircteaux de ___ commerce.";
     questionArray[son][0][false] = 0;
     
-    questionArray[son][1][true] = "Sont";
+    questionArray[son][1][true] = "Les livres ___ fabriqu&eacutes en Inde.";
     questionArray[son][1][false] = 1;
     
-    questionArray[son][2][true] = "Son";
+    questionArray[son][2][true] = "Il a retrouv&eacute ___ jouet.";
     questionArray[son][2][false] = 0;
     
-    questionArray[son][3][true] = "Sont";
+    questionArray[son][3][true] = "Ces fleurs ___ comestibles.";
     questionArray[son][3][false] = 1;
     
     questionArray[son][4][true] = "Son";
     questionArray[son][4][false] = 0;
     
-    questionArray[son][5][true] = "Sont";
+    questionArray[son][5][true] = "___-ils toujours";
     questionArray[son][5][false] = 1;
     
     questionArray[son][6][true] = "Son";
